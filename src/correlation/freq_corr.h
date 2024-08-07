@@ -26,7 +26,7 @@ size_t argmax(vector<T>& v) {
 
 
 void frequency_correlation(const vector<complex_t>& pss, const vector<complex_t>& matrix_name, int m, vector<complex_t>& data_offset) {
-    // Calculate the flipped and complex conjugated reference signal
+
     vector<complex_t> corr_coef(pss.rbegin(), pss.rend());
     for (size_t i = 0; i < corr_coef.size(); i++) {
         corr_coef[i] = conj(corr_coef[i]);
@@ -58,7 +58,7 @@ void frequency_correlation(const vector<complex_t>& pss, const vector<complex_t>
         }
     }
 
-    // Calculate correlation and phase difference
+
     vector<double> correlation(pss.size() + matrix_name.size() - 1, 0);
     for (size_t i = 0; i < correlation.size(); i++) {
         correlation[i] = abs(partA[i] + partB[i]);
@@ -84,7 +84,7 @@ void frequency_correlation(const vector<complex_t>& pss, const vector<complex_t>
     // Offset the data
     data_offset.resize(matrix_name.size());
     for (size_t i = 0; i < matrix_name.size(); i++) {
-        //cout  <<  exp(-1i * double(2) * M_PI * conj(CFO) * double(t[i])) << endl;
+        
         data_offset[i] = matrix_name[i] * exp(-1i * double(2) * M_PI * conj(CFO) * double(t[i]/1920000));
     }
     
