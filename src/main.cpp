@@ -9,7 +9,7 @@ using namespace std;
 //g++ main.cpp -o main -liio
 #include </home/ivan/Desktop/Work_dir/1440/SDR_OFDM_TX_RX/src/correlation/freq_corr.h>
 
-
+#include </home/ivan/Desktop/Work_dir/1440/SDR_OFDM_TX_RX/src/correlation/time_corr.h>
 int main(){
 
 
@@ -59,7 +59,15 @@ int main(){
 	
 	double com;
 	for(complex<double> com : data_corr_freq ){
-		cout << com << endl;
+		//cout << com << endl;
 	}
+
+	vector <int> sym_s;
+	sym_s = symbol_sync(data_corr_freq, 32, 128);
+
+	for(int ind1 : sym_s ){
+		cout << ind1 << endl;
+	}
+
 
 }
